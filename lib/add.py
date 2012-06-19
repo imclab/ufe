@@ -226,7 +226,7 @@ def move_original_file(root, file, filename_san) :
 
 
 
-def create_thumbnail(vhash, filename_san, width, height) :
+def create_thumbnail(vhash, filename_san) :
         """Creates thumbail (80x60px) from original video and stores it video original db table as a blob.
            Thumbnail is taken at 00:00:02 of the video.
         """
@@ -254,6 +254,9 @@ def create_thumbnail(vhash, filename_san, width, height) :
                 db.close()
                 # Remove thumbnail file
                 os.unlink(destination)
+                    
+                    
+def create_thumbnail_final(vhash, filename_san, width, height) :
     """Creates thumbail (600x338px) from original video
         Thumbnail is taken at 00:00:02 of the video.
         """
