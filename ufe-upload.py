@@ -185,7 +185,6 @@ else:
 							logthis('Uploaded  %s/%s/%s/%s/%s' % (year, month, day, vhash, encode_file_json))
 						except :
 							pass
-
 					# Close FTP 
 					ftp_file.close()
 					# Update status
@@ -215,6 +214,16 @@ else:
 				shutil.copy('%s/%s/%s' % (encoded, vhash, encode_file_log), '%s/%s/%s/%s' % (local_folder, ftp_path, vhash, encode_file_log))
 				os.chmod('%s/%s/%s/%s' % (local_folder, ftp_path, vhash, encode_file_log), 0644)
 				logthis('Uploaded  %s/%s/%s/%s/%s' % (year, month, day, vhash, encode_file_log))	
+                # Upload JSON
+				try :
+					encode_file_json = "%s.json" % vhash
+					logthis('Uploading  %s/%s/%s/%s/%s' % (year, month, day, vhash, encode_file_json))
+					shutil.copy('%s/%s/%s' % (encoded, vhash, encode_file_json), '%s/%s/%s/%s' % (local_folder, ftp_path, vhash, encode_file_json))
+					os.chmod('%s/%s/%s/%s' % (local_folder, ftp_path, vhash, encode_file_json), 0644)
+					logthis('Uploaded  %s/%s/%s/%s/%s' % (year, month, day, vhash, encode_file_json))
+				except :
+					pass
+				
                 # Upload JPG
                 try :
                     encode_file_jpg = "%s.jpg" % vhash
@@ -224,16 +233,7 @@ else:
                     logthis('Uploaded  %s/%s/%s/%s/%s' % (year, month, day, vhash, encode_file_jpg))
                 except :
                     pass
-				# Upload JSON
-				try :
-					encode_file_json = "%s.json" % vhash
-					logthis('Uploading  %s/%s/%s/%s/%s' % (year, month, day, vhash, encode_file_json))
-					shutil.copy('%s/%s/%s' % (encoded, vhash, encode_file_json), '%s/%s/%s/%s' % (local_folder, ftp_path, vhash, encode_file_json))
-					os.chmod('%s/%s/%s/%s' % (local_folder, ftp_path, vhash, encode_file_json), 0644)
-					logthis('Uploaded  %s/%s/%s/%s/%s' % (year, month, day, vhash, encode_file_json))
-				except :
-					pass
-				# Update status
+                # Update status
 				update_ftp_status(3, vhash, vpid)
 				update_vp_quantity(1, 'vp_done', vhash)
 	

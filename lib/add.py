@@ -226,7 +226,7 @@ def move_original_file(root, file, filename_san) :
 
 
 
-def create_thumbnail(vhash, filename_san) :
+def create_thumbnail(vhash, filename_san, width, height) :
         """Creates thumbail (80x60px) from original video and stores it video original db table as a blob.
            Thumbnail is taken at 00:00:02 of the video.
         """
@@ -254,16 +254,12 @@ def create_thumbnail(vhash, filename_san) :
                 db.close()
                 # Remove thumbnail file
                 os.unlink(destination)
-
-
-
-def create_thumbnail_final(vhash, filename_san, width, height) :
-    """Creates thumbail (600x338px) from original video and stores it video original db table as a blob.
+    """Creates thumbail (600x338px) from original video
         Thumbnail is taken at 00:00:02 of the video.
         """
     filename_san_n, filename_san_e = os.path.splitext(filename_san)
     source = "%s/%s" % (original, filename_san)
-    destination = "%s/%s.jpg" % (original, filename_san_n)
+    destination = "%s/%s/%s.jpg" % (encoded, vhash, vhash)
     command = '%s -itsoffset -2 -i %s -vcodec mjpeg -vframes 1 -an -f rawvideo -s %sx%s %s -y' % (ffmpeg_bin, source, width, height, destination)
     try :
         commandlist = command.split(" ")
