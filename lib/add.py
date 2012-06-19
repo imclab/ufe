@@ -254,8 +254,7 @@ def create_thumbnail(vhash, filename_san) :
                 db.close()
                 # Remove thumbnail file
                 os.unlink(destination)
-                    
-                    
+
 def create_thumbnail_final(vhash, filename_san, width, height) :
     """Creates thumbail (600x338px) from original video
         Thumbnail is taken at 00:00:02 of the video.
@@ -269,6 +268,5 @@ def create_thumbnail_final(vhash, filename_san, width, height) :
         output = subprocess.call(commandlist, stdout=open('/dev/null', 'w'), stderr=subprocess.STDOUT)
     except :
         output = 1
-        pass
-    
+        pass    
 
