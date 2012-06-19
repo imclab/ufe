@@ -6,11 +6,11 @@
 # 
 
 # Core root
-core_root = "/var/www/html/ufe/"
+core_root = "/var/www/ufe/"
 # Absolute path to folder where original videos are copied
-original = "/var/www/html/ufe/video_original/"
+original = "/var/www/ufe/video_original/"
 # Absolute path to folder where encoded videos are created
-encoded = "/var/www/html/ufe/video_encoded/"
+encoded = "/var/www/ufe/video_encoded/"
 # Absolute path to temporal folder (no trailing slash)
 tmppath = "/var/tmp"
 
@@ -22,13 +22,13 @@ timedif_to = 10
 server_name = "encoder01"
 
 # DB credentials
-db_host = "localhost"
-db_user = "root"
-db_pass = ""
+db_host = "127.0.0.1"
+db_user = "ufe"
+db_pass = "ufe"
 db_database = "ufe"
 
 # Absolute name of binaries
-ffmpeg_bin = "/usr/bin/ffmpeg"
+ffmpeg_bin = "/opt/local/bin/ffmpeg"
 
 # Create JSON? (True or False)
 create_video_json = True
