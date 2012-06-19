@@ -84,6 +84,7 @@ if vars().has_key('add') and vars().has_key('site_name') and vars().has_key('fil
 			# Move file and create thumbnail blob
 			move_original_file(file_path_only, file_name_only, filename_san)
 			create_thumbnail(vhash, filename_san)
+			create_thumbnail_final(vhash, filename_san, 600, 338)
 			logthis('%s was added as %s for %s' % (filename_orig, filename_san, site_name), stdout=0)
 			indented_status_json = status_check(vhash)
 			print indented_status_json
@@ -137,6 +138,7 @@ if vars().has_key('add') and vars().has_key('site_name') and vars().has_key('fil
 								# Move file and create thumbnail blob
 								move_original_file(root, file, filename_san)
 								create_thumbnail(vhash, filename_san)
+                                create_thumbnail_final(vhash, filename_san, 600, 338)
 								logthis('%s was added as  %s for %s' % (filename_orig, filename_san, site), stdout=0)
 								# If its a video, spawn encode
 								if not vars().has_key('spawn') :

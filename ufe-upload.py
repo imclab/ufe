@@ -214,7 +214,16 @@ else:
 				logthis('Uploading  %s/%s/%s/%s/%s' % (year, month, day, vhash, encode_file_log))
 				shutil.copy('%s/%s/%s' % (encoded, vhash, encode_file_log), '%s/%s/%s/%s' % (local_folder, ftp_path, vhash, encode_file_log))
 				os.chmod('%s/%s/%s/%s' % (local_folder, ftp_path, vhash, encode_file_log), 0644)
-				logthis('Uploaded  %s/%s/%s/%s/%s' % (year, month, day, vhash, encode_file_log))			
+				logthis('Uploaded  %s/%s/%s/%s/%s' % (year, month, day, vhash, encode_file_log))	
+                # Upload JPG
+                try :
+                    encode_file_jpg = "%s.jpg" % vhash
+                    logthis('Uploading  %s/%s/%s/%s/%s' % (year, month, day, vhash, encode_file_jpg))
+                    shutil.copy('%s/%s/%s' % (encoded, vhash, encode_file_jpg), '%s/%s/%s/%s' % (local_folder, ftp_path, vhash, encode_file_jpg))
+                    os.chmod('%s/%s/%s/%s' % (local_folder, ftp_path, vhash, encode_file_jpg), 0644)
+                    logthis('Uploaded  %s/%s/%s/%s/%s' % (year, month, day, vhash, encode_file_jpg))
+                except :
+                    pass
 				# Upload JSON
 				try :
 					encode_file_json = "%s.json" % vhash

@@ -255,3 +255,21 @@ def create_thumbnail(vhash, filename_san) :
                 # Remove thumbnail file
                 os.unlink(destination)
 
+
+
+def create_thumbnail_final(vhash, filename_san, width, height) :
+    """Creates thumbail (600x338px) from original video and stores it video original db table as a blob.
+        Thumbnail is taken at 00:00:02 of the video.
+        """
+    filename_san_n, filename_san_e = os.path.splitext(filename_san)
+    source = "%s/%s" % (original, filename_san)
+    destination = "%s/%s.jpg" % (original, filename_san_n)
+    command = '%s -itsoffset -2 -i %s -vcodec mjpeg -vframes 1 -an -f rawvideo -s %sx%s %s -y' % (ffmpeg_bin, source, width, height, destination)
+    try :
+        commandlist = command.split(" ")
+        output = subprocess.call(commandlist, stdout=open('/dev/null', 'w'), stderr=subprocess.STDOUT)
+    except :
+        output = 1
+        pass
+    
+
